@@ -1,0 +1,29 @@
+header {
+  text-align: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid $border-color ;
+  background: white;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.m-0  {
+  margin: 0;
+}
+
+
+.btn-close{
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  cursor: pointer;
+  color: #5e5e5e;
+  border-radius: 50%;
+  padding: 0.25em;
+}
+
+.btn-close:hover{
+  background-color: #e5e5e5;
+}

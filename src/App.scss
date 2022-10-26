@@ -1,0 +1,12 @@
+// 1. variables and mixins
+@import "./styles/abstracts/variables";
+
+// 2. base
+@import "./styles/base/common";
+@import "./styles/base/typography";
+
+// 3. components
+@import "./styles/components/scrollbar";
+@import "./styles/components/contactTabs";
+@import "./styles/components/searchBox";
+@import "./styles/components/contact";

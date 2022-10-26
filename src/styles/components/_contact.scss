@@ -1,0 +1,130 @@
+.contact-container {
+  background: white;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-right: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  box-shadow: 1px 1px 5px $border-color;
+  height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-content{
+  margin: 0;
+  display: flex;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.contact-list-container{
+  width: 35%;
+  border-right: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.d-none {
+  display: none;
+}
+
+.contact-list {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.contact-item {
+  list-style: none;
+  padding: 0.5rem;
+  display: flex;
+  border-bottom: 1px solid $border-color;
+  cursor: pointer;
+}
+
+.selected-contact {
+  border-right: 4px solid $primary-color;
+  background: $primary-color-light;;
+}
+
+.contact-item-image {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin-right: 0.5rem;
+}
+
+.contact-item-title {
+  margin: 0;
+  font-weight: 700;
+}
+.contact-item-description {
+  margin: 0;
+  font-size: 0.8rem;
+  color: $font-color-light;
+}
+
+.contact-details-container {
+  box-sizing: border-box;
+  width: 65%;
+}
+
+.contact-details-card {
+  height: calc(100% - 4rem);
+  position: relative;
+  padding: 1rem;
+  border: 1px solid $border-color;
+  margin: 1rem;
+  border-radius: 0.5em;
+  box-shadow: 1px 1px 5px $border-color;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.contact-details-image{
+  border-radius: 50%;
+  width: 128px;
+  height: 128px;
+  align-self: center;
+}
+
+.contact-details-name{
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  color: $font-color;
+}
+
+.contact-details-username{
+  font-size: 1rem;
+  text-align: center;
+  margin: 0;  
+}
+
+.contact-details-info {
+  margin: 1rem 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-list-container{
+    width: 50%;
+  }
+  .contact-details-container {
+    box-sizing: border-box;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .contact-list-container{
+    width: 100%;
+  }
+  .contact-details-container {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}

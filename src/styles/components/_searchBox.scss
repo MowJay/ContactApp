@@ -1,0 +1,17 @@
+.search-box{
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  margin: 0.5em;
+  padding: 0.5em 0.5em;
+  display: flex;
+}
+
+.search-input{
+  border:0;
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+.search-input:focus{
+  outline: 0;
+}
