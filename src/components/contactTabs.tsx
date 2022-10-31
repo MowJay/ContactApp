@@ -4,13 +4,13 @@ import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { Contact } from "../types";
 import { getTabs } from "./../utils/utils";
 import ContactTabItem from "./contactTabItem";
-import { MEDIUM_WIDTH, SMALL_WIDTH, ALL } from "./../constants/constants";
+import { ALL, Width } from "./../constants/constants";
 
 export type ContactTabsProps = {
   contacts: Contact[];
   currentTab: string;
   setTab: (tab: string) => void;
-  width: number;
+  width: Width;
 };
 
 const ContactTabs = ({
@@ -33,10 +33,10 @@ const ContactTabs = ({
     Math.ceil((26 / tabGroupCount) * tabGroup);
 
   useEffect(() => {
-    if (width > MEDIUM_WIDTH) {
+    if (width === Width.Large) {
       setTabGroupCount(1);
       setTabGroup(1);
-    } else if (width > SMALL_WIDTH) {
+    } else if (width === Width.Medium) {
       setTabGroupCount(2);
       if (tabGroup > 2) {
         setTabGroup(2);

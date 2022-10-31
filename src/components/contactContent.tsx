@@ -3,11 +3,12 @@ import React, { useState, useCallback, memo } from "react";
 import { Contact } from "../types";
 import ContactList from "./contactList";
 import ContactDetails from "./contactDetails";
+import { Width } from "../constants/constants";
 
 export type ContactContentProps = {
   contacts: Contact[];
   currentTab: string;
-  width: number;
+  width: Width;
 };
 
 const ContactContent = ({

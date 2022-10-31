@@ -5,14 +5,14 @@ import ContactItem from "./contactItem";
 import { filterByAlphabet } from "../utils/utils";
 import { searchContacts } from "./../utils/utils";
 import SearchBox from "./searchBox";
-import { ALL, SMALL_WIDTH } from "./../constants/constants";
+import { ALL, Width } from "./../constants/constants";
 
 export type ContactListProps = {
   contacts: Contact[];
   currentTab: string;
   selectedContact: null | Contact;
   handleSelectContact: (selectedContact: Contact) => void;
-  width: number;
+  width: Width;
 };
 
 const ContactList = ({
@@ -36,7 +36,7 @@ const ContactList = ({
   return (
     <div
       className={`contact-list-container ${
-        selectedContact && width < SMALL_WIDTH ? "d-none" : ""
+        selectedContact && width === Width.Small ? "d-none" : ""
       }`}
     >
       {currentTab === ALL && (
