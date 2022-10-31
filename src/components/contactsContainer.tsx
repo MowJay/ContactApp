@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
-import ContactTabs from "./contactTabs";
 
-import { getContacts } from "../services/contacts";
+import ContactTabs from "./contactTabs";
 import ContactContent from "./contactContent";
+import { getContacts } from "../services/contacts";
+import { ALL, LARGE_WIDTH } from "./../constants/constants";
 
 const ContactsContainer = () => {
   const [contacts, setContacts] = useState([]);
-  const [currentTab, setCurrentTab] = useState("All");
-  const [width, setWidth] = useState(1100);
+  const [currentTab, setCurrentTab] = useState(ALL);
+  const [width, setWidth] = useState(LARGE_WIDTH);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -19,8 +20,6 @@ const ContactsContainer = () => {
   );
 
   useEffect(() => {
-    updateDimensions();
-
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);

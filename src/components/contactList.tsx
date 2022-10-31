@@ -5,7 +5,7 @@ import ContactItem from "./contactItem";
 import { filterByAlphabet } from "../utils/utils";
 import { searchContacts } from "./../utils/utils";
 import SearchBox from "./searchBox";
-import { ALL } from "./../constants/constants";
+import { ALL, SMALL_WIDTH } from "./../constants/constants";
 
 export type ContactListProps = {
   contacts: Contact[];
@@ -36,7 +36,7 @@ const ContactList = ({
   return (
     <div
       className={`contact-list-container ${
-        selectedContact && width < 600 ? "d-none" : ""
+        selectedContact && width < SMALL_WIDTH ? "d-none" : ""
       }`}
     >
       {currentTab === ALL && (
