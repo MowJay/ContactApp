@@ -5,14 +5,14 @@ import ContactItem from "./contactItem";
 import { filterByAlphabet } from "../utils/utils";
 import { searchContacts } from "./../utils/utils";
 import SearchBox from "./searchBox";
-import { ALL, Width } from "./../constants/constants";
+import { ALL } from "./../constants/constants";
 
 export type ContactListProps = {
   contacts: Contact[];
   currentTab: string;
   selectedContact: null | Contact;
   handleSelectContact: (selectedContact: Contact) => void;
-  width: Width;
+  shouldHide: boolean;
 };
 
 const ContactList = ({
@@ -20,7 +20,7 @@ const ContactList = ({
   currentTab,
   selectedContact,
   handleSelectContact,
-  width,
+  shouldHide,
 }: ContactListProps) => {
   const [query, setQuery] = useState("");
 
@@ -36,7 +36,7 @@ const ContactList = ({
   return (
     <div
       className={`contact-list-container ${
-        selectedContact && width === Width.Small ? "d-none" : ""
+        selectedContact && shouldHide ? "d-none" : ""
       }`}
     >
       {currentTab === ALL && (

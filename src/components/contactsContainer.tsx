@@ -39,8 +39,6 @@ const ContactsContainer = () => {
     getContacts().then((response) => setContacts(response.data.results));
   }, []);
 
-  console.log("dsa");
-
   return (
     <div className="contact-container">
       <ContactTabs
@@ -52,7 +50,7 @@ const ContactsContainer = () => {
       <ContactContent
         contacts={contacts}
         currentTab={currentTab}
-        width={width}
+        shouldHideList={width === Width.Small}
       />
     </div>
   );
