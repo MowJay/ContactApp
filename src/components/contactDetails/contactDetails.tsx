@@ -7,7 +7,7 @@ import {
   MdClose,
 } from "react-icons/md";
 
-import { Contact } from "../types";
+import { Contact } from "../../types";
 import ContactDetailsItem from "./contactDetailsItem";
 
 export type ContactDetailsProps = {

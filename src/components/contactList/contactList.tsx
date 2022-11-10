@@ -1,18 +1,18 @@
-import React, { useState, useCallback, memo } from "react";
+import { useState, useCallback, memo } from "react";
 
-import { Contact } from "../types";
-import ContactItem from "./contactItem";
-import { filterByAlphabet } from "../utils/utils";
-import { searchContacts } from "./../utils/utils";
-import SearchBox from "./searchBox";
-import { ALL } from "./../constants/constants";
+import { Contact } from "../../types";
+import ContactItem from "../contactItem/contactItem";
+import { filterByAlphabet } from "../../utils/utils";
+import { searchContacts } from "../../utils/utils";
+import SearchBox from "../searchBox";
+import { ALL, Width } from "../../constants/constants";
+import useWindowWidth from "./../../hooks/useWindowWidth/index";
 
 export type ContactListProps = {
   contacts: Contact[];
   currentTab: string;
   selectedContact: null | Contact;
   handleSelectContact: (selectedContact: Contact) => void;
-  shouldHide: boolean;
 };
 
 const ContactList = ({
@@ -20,7 +20,6 @@ const ContactList = ({
   currentTab,
   selectedContact,
   handleSelectContact,
-  shouldHide,
 }: ContactListProps) => {
   const [query, setQuery] = useState("");
 
@@ -33,21 +32,24 @@ const ContactList = ({
     return filterByAlphabet(contacts, currentTab);
   };
 
+  const width = useWindowWidth();
+
   return (
     <div
       className={`contact-list-container ${
-        selectedContact && shouldHide ? "d-none" : ""
+        selectedContact && width === Width.Small ? "d-none" : ""
       }`}
     >
       {currentTab === ALL && (
         <SearchBox query={query} handleQueryChange={handleQueryChange} />
       )}
       <ul className="contact-list">
-        {prepareContacts(contacts).map((contact) => (
+        {prepareContacts(contacts).map((contact, index) => (
           <ContactItem
             contact={contact}
             selected={selectedContact?.login.uuid === contact.login.uuid}
             handleClick={() => handleSelectContact(contact)}
+            key={index}
           />
         ))}
       </ul>

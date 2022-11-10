@@ -40,16 +40,16 @@
 }
 
 .current-tab {
-  color:  $primary-color;
+  color: $primary-color;
   border-bottom: 4px solid $primary-color;
 }
 
 .disabled-tab {
-  color:  $disabled-font-color;
+  color: $disabled-font-color;
   cursor: default;
 }
 
-.tab-separator{  
+.tab-separator {
   width: 2px;
   height: 80%;
   background: $border-color;

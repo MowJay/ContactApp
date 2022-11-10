@@ -1,24 +1,20 @@
 import { Contact } from "../types";
 
 export function geAlphabets() {
-  return new Array(26).fill(1).map((_, i) => String.fromCharCode(65 + i));
+  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 }
 
 export function filterByAlphabet(contacts: Contact[], alphabet: string) {
   return contacts.filter((contact: Contact) =>
-    contact.name.last
-      .toLocaleLowerCase()
-      .startsWith(alphabet.toLocaleLowerCase())
+    contact.name.last.toLowerCase().startsWith(alphabet.toLowerCase())
   );
 }
 
 export function searchContacts(contacts: Contact[], query: string) {
   return contacts.filter(
     (contact: Contact) =>
-      contact.name.last
-        .toLocaleLowerCase()
-        .includes(query.toLocaleLowerCase()) ||
-      contact.name.first.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+      contact.name.last.toLowerCase().includes(query.toLowerCase()) ||
+      contact.name.first.toLowerCase().includes(query.toLowerCase())
   );
 }
 

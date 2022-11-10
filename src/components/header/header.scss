@@ -1,0 +1,16 @@
+@import "../../styles/main.scss";
+
+h1 {
+  color: $font-color;
+  line-height: 4rem;
+  margin: 0;
+  max-lines: 1;
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid $border-color;
+  background: white;
+  box-sizing: border-box;
+  height: 4rem;
+}

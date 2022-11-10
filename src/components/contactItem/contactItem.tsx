@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Contact } from "../types";
+import { Contact } from "../../types";
 
 export type ContactItemProps = {
   contact: Contact;
