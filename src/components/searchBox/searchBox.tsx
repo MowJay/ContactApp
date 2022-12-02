@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { MdSearch } from "react-icons/md";
 
 export type SearchBoxProps = {

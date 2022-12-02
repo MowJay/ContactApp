@@ -4,12 +4,11 @@ import { Contact } from "../../types";
 import ContactList from "../contactList/contactList";
 import ContactDetails from "../contactDetails/contactDetails";
 
-export type ContactContentProps = {
-  contacts: Contact[];
+export type ContactsContentProps = {
   currentTab: string;
 };
 
-const ContactContent = ({ contacts, currentTab }: ContactContentProps) => {
+const ContactsContent = ({ currentTab }: ContactsContentProps) => {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
   const handleSelectContact = useCallback(
@@ -17,19 +16,21 @@ const ContactContent = ({ contacts, currentTab }: ContactContentProps) => {
     []
   );
 
-  const unSelectContact = useCallback(() => setSelectedContact(null), []);
+  const handleUnselectContact = useCallback(() => setSelectedContact(null), []);
 
   return (
     <div className="contact-content">
       <ContactList
-        contacts={contacts}
         currentTab={currentTab}
         selectedContact={selectedContact}
         handleSelectContact={handleSelectContact}
       />
-      <ContactDetails contact={selectedContact} handleClose={unSelectContact} />
+      <ContactDetails
+        contact={selectedContact}
+        handleClose={handleUnselectContact}
+      />
     </div>
   );
 };
 
-export default ContactContent;
+export default ContactsContent;

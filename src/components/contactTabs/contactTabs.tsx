@@ -1,24 +1,22 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
-import { TabWindow } from "../../constants/enums";
-import { Contact } from "../../types";
-import { getTabs } from "../../utils/utils";
 import ContactTabItem from "../contactTabItem/contactTabItem";
-import { ALL, Width } from "../../constants/constants";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import { useContacts } from "./../../hooks/useContacts";
+import { TabWindow } from "../../constants/enums";
+import { ALL, Width } from "../../constants/constants";
 
 export type ContactTabsProps = {
-  contacts: Contact[];
   currentTab: string;
   setTab: (tab: string) => void;
 };
 
-const ContactTabs = ({ contacts, currentTab, setTab }: ContactTabsProps) => {
+const ContactTabs = ({ currentTab, setTab }: ContactTabsProps) => {
   const [currentTabWindow, setCurrentTabWindow] = useState(TabWindow.First);
   const [tabWindowsCount, setTabWindowsCount] = useState(1);
 
-  const tabs = useMemo(() => getTabs(contacts), [contacts]);
+  const { tabs, contacts } = useContacts();
   const width = useWindowWidth();
 
   const incrementTabWindow = () => setCurrentTabWindow(currentTabWindow + 1);
@@ -69,7 +67,7 @@ const ContactTabs = ({ contacts, currentTab, setTab }: ContactTabsProps) => {
         .map((tab, index) => (
           <ContactTabItem
             title={tab}
-            count={tabs[tab]}
+            count={tabs[tab].length}
             handleSelect={setTab}
             isSelected={currentTab === tab}
             key={index}

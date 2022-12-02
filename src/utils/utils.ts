@@ -1,13 +1,7 @@
-import { Contact } from "../types";
+import { Contact, Tabs } from "../types";
 
-export function geAlphabets() {
+export function getAlphabets() {
   return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-}
-
-export function filterByAlphabet(contacts: Contact[], alphabet: string) {
-  return contacts.filter((contact: Contact) =>
-    contact.name.last.toLowerCase().startsWith(alphabet.toLowerCase())
-  );
 }
 
 export function searchContacts(contacts: Contact[], query: string) {
@@ -18,14 +12,28 @@ export function searchContacts(contacts: Contact[], query: string) {
   );
 }
 
+export function sortContacts(contacts: Contact[]) {
+  return contacts.sort((a: Contact, b: Contact) =>
+    a.name.last.toLowerCase().localeCompare(b.name.last.toLowerCase())
+  );
+}
+
+export function getInitialTabs() {
+  const tabs: Tabs = {};
+  const alphabets = getAlphabets();
+
+  alphabets.forEach((alphabet) => (tabs[alphabet] = []));
+
+  return tabs;
+}
+
 export function getTabs(contacts: Contact[]) {
-  const tabs: { [key: string]: number } = {};
-  const alphabets = geAlphabets();
-  alphabets.forEach((alphabet) => (tabs[alphabet] = 0));
+  const tabs: Tabs = getInitialTabs();
 
   contacts.forEach((contact) => {
-    const char: string = contact.name.last.charAt(0).toUpperCase();
-    if (alphabets.includes(char)) tabs[char] += 1;
+    const alphabet = contact.name.last.toUpperCase().charAt(0);
+    if (Array.isArray(tabs[alphabet])) tabs[alphabet].push(contact);
   });
+
   return tabs;
 }

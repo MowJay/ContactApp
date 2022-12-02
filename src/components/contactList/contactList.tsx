@@ -2,26 +2,26 @@ import { useState, useCallback, memo } from "react";
 
 import { Contact } from "../../types";
 import ContactItem from "../contactItem/contactItem";
-import { filterByAlphabet } from "../../utils/utils";
 import { searchContacts } from "../../utils/utils";
 import SearchBox from "../searchBox";
 import { ALL, Width } from "../../constants/constants";
 import useWindowWidth from "./../../hooks/useWindowWidth/index";
+import { useContacts } from "./../../hooks/useContacts/useContacts";
 
 export type ContactListProps = {
-  contacts: Contact[];
   currentTab: string;
   selectedContact: null | Contact;
   handleSelectContact: (selectedContact: Contact) => void;
 };
 
 const ContactList = ({
-  contacts,
   currentTab,
   selectedContact,
   handleSelectContact,
 }: ContactListProps) => {
   const [query, setQuery] = useState("");
+
+  const { contacts, tabs } = useContacts();
 
   const handleQueryChange = useCallback((query: string) => setQuery(query), []);
 
@@ -29,7 +29,7 @@ const ContactList = ({
     if (currentTab === ALL) {
       return searchContacts(contacts, query);
     }
-    return filterByAlphabet(contacts, currentTab);
+    return tabs[currentTab];
   };
 
   const width = useWindowWidth();

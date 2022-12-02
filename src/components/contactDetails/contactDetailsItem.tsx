@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 export type ContactDetailsItemProps = {
   title: string;

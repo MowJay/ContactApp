@@ -1,32 +1,28 @@
 import { useState, useEffect, useCallback } from "react";
 
 import ContactTabs from "../contactTabs/contactTabs";
-import ContactContent from "../contactContent/contactContent";
+import ContactsContent from "../contactsContent/contactsContent";
 import { getContacts } from "../../services/contacts";
 import { ALL } from "../../constants/constants";
-import { Contact } from "../../types";
+import { useContacts } from "./../../hooks/useContacts/useContacts";
 
 const ContactsContainer = () => {
-  const [contacts, setContacts] = useState<Contact[]>([]);
   const [currentTab, setCurrentTab] = useState(ALL);
 
   const handleCurrentTabChange = useCallback(
     (tab: string) => setCurrentTab(tab),
     []
   );
+  const { handelSetContacts } = useContacts();
 
   useEffect(() => {
-    getContacts().then((contacts) => setContacts(contacts));
+    getContacts().then((contacts) => handelSetContacts(contacts));
   }, []);
 
   return (
     <div className="contact-container">
-      <ContactTabs
-        contacts={contacts}
-        currentTab={currentTab}
-        setTab={handleCurrentTabChange}
-      />
-      <ContactContent contacts={contacts} currentTab={currentTab} />
+      <ContactTabs currentTab={currentTab} setTab={handleCurrentTabChange} />
+      <ContactsContent currentTab={currentTab} />
     </div>
   );
 };
