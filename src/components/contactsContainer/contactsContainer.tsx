@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 
 import ContactTabs from "../contactTabs/contactTabs";
 import ContactsContent from "../contactsContent/contactsContent";
-import { getContacts } from "../../services/contacts";
 import { ALL } from "../../constants/constants";
 import { useContacts } from "./../../hooks/useContacts/useContacts";
 
