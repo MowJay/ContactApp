@@ -1,4 +1,6 @@
-.search-box{
+.search-box {
+  box-sizing: border-box;
+  width: calc(100% - 1em);
   border: 1px solid $border-color;
   border-radius: 4px;
   margin: 0.5em;
@@ -6,12 +8,12 @@
   display: flex;
 }
 
-.search-input{
-  border:0;
+.search-input {
+  border: 0;
   flex-grow: 1;
   font-size: 1rem;
 }
 
-.search-input:focus{
+.search-input:focus {
   outline: 0;
 }

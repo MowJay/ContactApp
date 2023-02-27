@@ -3,3 +3,9 @@ export enum TabWindow {
   Second,
   Third,
 }
+
+export enum SpinnerSize {
+  Small = "sm",
+  Medium = "md",
+  Large = "lg",
+}

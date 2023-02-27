@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from "react";
+import { useState, useCallback, memo, useMemo } from "react";
 
 import { Contact } from "../../types";
 import ContactItem from "../contactItem/contactItem";
@@ -7,6 +7,7 @@ import SearchBox from "../searchBox";
 import { ALL, Width } from "../../constants/constants";
 import useWindowWidth from "./../../hooks/useWindowWidth/index";
 import { useContacts } from "./../../hooks/useContacts/useContacts";
+import Spinner from "./../common/spinner";
 
 export type ContactListProps = {
   currentTab: string;
@@ -21,18 +22,18 @@ const ContactList = ({
 }: ContactListProps) => {
   const [query, setQuery] = useState("");
 
-  const { contacts, tabs } = useContacts();
+  const { contacts, tabs, contactLoading } = useContacts();
 
   const handleQueryChange = useCallback((query: string) => setQuery(query), []);
 
-  const prepareContacts = (contacts: Contact[]) => {
+  const width = useWindowWidth();
+
+  const visibleContacts = useMemo(() => {
     if (currentTab === ALL) {
       return searchContacts(contacts, query);
     }
     return tabs[currentTab];
-  };
-
-  const width = useWindowWidth();
+  }, [currentTab, query, contacts, tabs]);
 
   return (
     <div
@@ -43,16 +44,20 @@ const ContactList = ({
       {currentTab === ALL && (
         <SearchBox query={query} handleQueryChange={handleQueryChange} />
       )}
-      <ul className="contact-list">
-        {prepareContacts(contacts).map((contact, index) => (
-          <ContactItem
-            contact={contact}
-            selected={selectedContact?.login.uuid === contact.login.uuid}
-            handleClick={() => handleSelectContact(contact)}
-            key={index}
-          />
-        ))}
-      </ul>
+      {contactLoading ? (
+        <Spinner />
+      ) : (
+        <ul className="contact-list">
+          {visibleContacts.map((contact, index) => (
+            <ContactItem
+              contact={contact}
+              selected={selectedContact?.login.uuid === contact.login.uuid}
+              handleClick={() => handleSelectContact(contact)}
+              key={index}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

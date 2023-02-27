@@ -13,10 +13,10 @@ const ContactsContainer = () => {
     (tab: string) => setCurrentTab(tab),
     []
   );
-  const { handelSetContacts } = useContacts();
+  const { fetchContacts } = useContacts();
 
   useEffect(() => {
-    getContacts().then((contacts) => handelSetContacts(contacts));
+    fetchContacts();
   }, []);
 
   return (

@@ -1,15 +1,16 @@
-.contact-content{
+.contact-content {
   margin: 0;
   display: flex;
   overflow-y: hidden;
   height: 100%;
 }
 
-.contact-list-container{
+.contact-list-container {
   width: 35%;
   border-right: 1px solid $border-color;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .d-none {
@@ -17,6 +18,7 @@
 }
 
 .contact-list {
+  width: 100%;
   margin: 0;
   padding: 0;
   overflow-y: auto;
@@ -32,7 +34,7 @@
 
 .selected-contact {
   border-right: 4px solid $primary-color;
-  background: $primary-color-light;;
+  background: $primary-color-light;
 }
 
 .contact-item-image {
@@ -71,14 +73,14 @@
   align-items: stretch;
 }
 
-.contact-details-image{
+.contact-details-image {
   border-radius: 50%;
   width: 128px;
   height: 128px;
   align-self: center;
 }
 
-.contact-details-name{
+.contact-details-name {
   margin: 0.5rem 0 0.25rem 0;
   font-size: 1.4rem;
   font-weight: 700;
@@ -86,10 +88,10 @@
   color: $font-color;
 }
 
-.contact-details-username{
+.contact-details-username {
   font-size: 1rem;
   text-align: center;
-  margin: 0;  
+  margin: 0;
 }
 
 .contact-details-info {
@@ -98,7 +100,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .contact-list-container{
+  .contact-list-container {
     width: 50%;
   }
   .contact-details-container {
@@ -108,7 +110,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .contact-list-container{
+  .contact-list-container {
     width: 100%;
   }
   .contact-details-container {
